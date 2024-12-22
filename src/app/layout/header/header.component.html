@@ -1,0 +1,53 @@
+<header
+  class="fixed z-30 hidden h-[60px] w-screen items-center border-b bg-white md:flex"
+  id="TopNav"
+>
+  <div class="mx-auto flex w-full items-center justify-between gap-6 pe-8 ps-4">
+    <a routerLink="/" aria-label="to Home Page" class="flex items-center gap-2">
+      <span class="text-2xl font-bold">TechShop</span>
+    </a>
+
+    <div class="flex items-center gap-3">
+      <button aria-label="Open Search" class="me-2 border-e pe-4 text-black">
+        <!-- <BiSearch size={25} /> -->
+      </button>
+
+      <a
+        *ngIf="!user?.isRegistered"
+        class="rounded-sm bg-primary px-4 py-2 text-white"
+        routerLink="/login"
+      >
+        <span class="mx-4 whitespace-nowrap text-[15px] font-medium"
+          >login</span
+        >
+      </a>
+      <div *ngIf="user && user.isRegistered" class="me-4 flex items-center">
+        <div class="relative">
+          <button
+            (click)="toggleMenu()"
+            class="mt-1 rounded-full border border-primary-300"
+          >
+            <img [src]="user.imageUrl" class="h-[35px] w-[35px] rounded-full" />
+          </button>
+
+          <div
+            *ngIf="showUserMenu"
+            class="absolute end-0 top-12 w-[200px] rounded-lg border bg-white shadow-xl"
+          >
+            <button class="flex w-full gap-2 px-2 py-3 hover:bg-gray-100">
+              <i class="bi-person-fill-exclamation"></i>
+              <span class="text-sm font-semibold">profile</span>
+            </button>
+            <button
+              (click)="onLogoutClick()"
+              class="flex w-full gap-2 border-t px-2 py-3 hover:bg-gray-100"
+            >
+              <i class="bi-box-arrow-left"></i>
+              <span class="text-sm font-semibold">logout</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

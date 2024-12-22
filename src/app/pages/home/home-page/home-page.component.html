@@ -1,0 +1,33 @@
+<div class="relative">
+  <div
+    class="relative mt-4 grid grid-cols-2 gap-3 px-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
+  >
+    <app-product-card
+      *ngFor="let product of products"
+      [product]="product"
+      [isLiked]="userActions.likes.includes(product._id)"
+      [isSaved]="userActions.saves.includes(product._id)"
+      [inCart]="productIsInCart(product)"
+    />
+  </div>
+  <app-button
+    class="flex justify-center py-7 text-center"
+    className="bg-primary text-white"
+    [isLoading]="isloadingMore"
+    (onClick)="loadMoreClick()"
+    *ngIf="hasNext"
+  >
+    loadMore
+  </app-button>
+</div>
+<div
+  class="fixed end-0 start-0 top-0 z-20 flex w-full justify-between border-b bg-white p-2 md:hidden"
+>
+  <button aria-label="Open Main Menu" class="p-0">
+    <i class="bi-cart3"></i>
+  </button>
+  <h1 class="text-xl font-bold">home</h1>
+  <button aria-label="Open Search Page" class="p-0">
+    <i class="bi-cart3"></i>
+  </button>
+</div>

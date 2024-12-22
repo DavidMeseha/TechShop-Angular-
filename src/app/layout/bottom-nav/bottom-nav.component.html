@@ -1,0 +1,18 @@
+<nav
+  class="fixed bottom-0 end-0 start-0 z-20 block w-full border border-gray-300 bg-white md:hidden"
+>
+  <div class="flex w-full justify-between text-center font-bold">
+    <ng-content *ngFor="let item of bottomNav">
+      <a class="block w-1/4 p-2" [routerLink]="item.to">
+        <div class="relative inline-block">
+          <div class="text-xs capitalize">{{ item.name }}</div>
+          <div
+            class="absolute -end-2 top-0 h-4 w-4 rounded-full bg-primary text-xs font-normal text-white"
+          >
+            5
+          </div>
+        </div>
+      </a>
+    </ng-content>
+  </div>
+</nav>

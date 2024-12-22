@@ -1,0 +1,18 @@
+<div [ngClass]="cn(['pb-1', className])">
+  <label class="mb-1 block capitalize">
+    {{ label }}
+    <span *ngIf="required" class="text-primary">*</span>
+  </label>
+  <input
+    (input)="onInputChange($event)"
+    (blur)="onInputBlur()"
+    [name]="inputName"
+    [type]="inputType"
+    [placeholder]="inputPlaceholder"
+    autoComplete="off"
+    class="block w-full rounded-sm border border-secondary px-4 py-2 focus:border-primary focus:ring-primary"
+  />
+  <div class="min-h-[21px] text-[14px] font-semibold text-red-500">
+    <span *ngIf="errorMessage">{{ errorMessage }}</span>
+  </div>
+</div>

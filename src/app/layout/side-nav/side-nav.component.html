@@ -1,0 +1,32 @@
+<nav
+  class="fixed z-20 hidden h-full w-[230px] border-e bg-white pe-2 ps-2 pt-[70px] md:block rtl:ps-6"
+>
+  <div class="mx-auto w-full">
+    <ul>
+      <li *ngFor="let item of menu">
+        <a
+          [routerLink]="item.to"
+          class="mb-2 flex w-full items-center gap-2 rounded-md p-2 text-lg font-semibold hover:bg-lightGray"
+          >{{ item.name }}</a
+        >
+      </li>
+      <!-- {menu.map((item, index) => (
+    <li key={index}>
+      {item.to ? (
+        <LocalLink
+          href={item.to}
+          className={`mb-2 flex w-full items-center gap-2 rounded-md p-2 text-lg font-semibold hover:bg-lightGray ${
+            pathname === item.to ? "text-primary" : ""
+          }`}
+        >
+          {pathname === item.to ? item.IconActive : item.Icon}
+          {item.name}
+        </LocalLink>
+      ) : (
+        item.sup && <SubMenuItem item={item} />
+      )}
+    </li>
+  ))} -->
+    </ul>
+  </div>
+</nav>

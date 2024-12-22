@@ -1,0 +1,40 @@
+<div
+  class="flex gap-1 text-yellow-600"
+  (mouseleave)="mouseMoveHandle($event)"
+  (mousemove)="mouseEnterHandle($event)"
+>
+  <div class="{'cursor-pointer': 'isEditable' }" (click)="onChange(1)">
+    <i *ngIf="tempRate >= 1; else nostar1" class="bi-star-fill"></i>
+    <ng-template #nostar1>
+      <i class="bi-star"></i>
+    </ng-template>
+  </div>
+
+  <div class="{'cursor-pointer': 'isEditable' }" (click)="onChange(2)">
+    <i *ngIf="tempRate >= 2; else nostar2" class="bi-star-fill"></i>
+    <ng-template #nostar2>
+      <i class="bi-star"></i>
+    </ng-template>
+  </div>
+
+  <div class="{'cursor-pointer': 'isEditable' }" (click)="onChange(3)">
+    <i *ngIf="tempRate >= 3; else nostar3" class="bi-star-fill"></i>
+    <ng-template #nostar3>
+      <i class="bi-star"></i>
+    </ng-template>
+  </div>
+
+  <div class="{'cursor-pointer': 'isEditable' }" (click)="onChange(4)">
+    <i *ngIf="tempRate >= 4; else nostar4" class="bi-star-fill"></i>
+    <ng-template #nostar4>
+      <i class="bi-star"></i>
+    </ng-template>
+  </div>
+
+  <div class="{'cursor-pointer': 'isEditable' }" (click)="onChange(5)">
+    <i *ngIf="tempRate >= 5; else nostar5" class="bi-star-fill"></i>
+    <ng-template #nostar5>
+      <i class="bi-star"></i>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+@if (product) {
+<div
+  class="flex w-full h-full flex-col justify-between overflow-hidden rounded-sm border bg-white"
+>
+  <div>
+    <div class="relative">
+      <img
+        alt="Converse sneakers"
+        class="h-44 w-full object-contain"
+        [src]="product.pictures[0].imageUrl"
+      />
+    </div>
+
+    <div class="mt-2 flex flex-col gap-1 px-2 sm:px-4">
+      <a
+        class="font-semibold text-gray-800 hover:underline"
+        [routerLink]="['/product', product.seName]"
+      >
+        <span>{{ product.name }}</span>
+      </a>
+      <p class="-mt-1 text-sm text-secondary">
+        sold by:
+        <a
+          class="hover:text-primary"
+          [routerLink]="['/profile/vendor', product.vendor.seName]"
+        >
+          {{ product.vendor.name }}
+        </a>
+      </p>
+      <span class="font-semibold text-gray-800"
+        >{{ product.price.price }}$</span
+      >
+      <div class="flex items-center">
+        <app-rating-stars
+          [rate]="
+            product.productReviewOverview.ratingSum /
+            product.productReviewOverview.totalReviews
+          "
+        />
+        <app-button aria-label="Add review" class="px-2 text-lg text-primary">
+          <div class="h-2">+</div>
+        </app-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4 flex border-t border-gray-200">
+    <app-button
+      [ngClass]="{
+        'basis-1/3 rounded-none border-e': true,
+        'bg-green-200': inCart,
+        'bg-white': !inCart
+      }"
+      className="px-1 py-1 fill-black w-full"
+      spinnerSize="18"
+    >
+      <div class="flex items-center justify-center gap-1">
+        <i class="bi-cart"></i>
+        <span class="hidden text-sm sm:inline">{{ product.carts }}</span>
+      </div>
+    </app-button>
+    <app-button
+      [ngClass]="{
+        'basis-1/3 rounded-none border-e': true,
+        'bg-red-200': isLiked,
+        'bg-white': !isLiked
+      }"
+      className="px-1 py-1 fill-black w-full"
+      spinnerSize="18"
+    >
+      <div class="flex items-center justify-center gap-1">
+        <i class="bi-heart"></i>
+        <span class="hidden text-sm sm:inline">{{ product.likes }}</span>
+      </div>
+    </app-button>
+    <app-button
+      [ngClass]="{
+        'basis-1/3 rounded-none border-e': true,
+        'bg-yellow-200': isSaved,
+        'bg-white': !isSaved
+      }"
+      className="px-1 py-1 fill-black w-full"
+      spinnerSize="18"
+    >
+      <div class="flex items-center justify-center gap-1">
+        <i class="bi-bookmark"></i>
+        <span class="hidden text-sm sm:inline">{{ product.saves }}</span>
+      </div>
+    </app-button>
+  </div>
+</div>
+}

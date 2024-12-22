@@ -1,0 +1,16 @@
+<button
+  [ngClass]="cn(['relative rounded-sm fill-white px-4 py-2', className])"
+  [disabled]="isLoading"
+  (click)="clickEmit($event)"
+>
+  <ng-container *ngIf="isLoading">
+    <div
+      class="absolute inset-0 flex w-full items-center justify-center rounded-md bg-inherit"
+    >
+      <app-loading-spinner [style]="{ width: spinnerSize + 'px' }" />
+    </div>
+  </ng-container>
+  <div class="rounded-sm">
+    <ng-content></ng-content>
+  </div>
+</button>

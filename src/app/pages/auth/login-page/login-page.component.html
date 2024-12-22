@@ -1,0 +1,40 @@
+<form
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit()"
+  class="items flex h-screen flex-col p-4 pt-14"
+>
+  <div class="flex justify-between">
+    <h1 class="mb-4 text-2xl font-bold">Login</h1>
+    <a
+      class="text-primary hover:underline cursor-pointer"
+      routerLink="/register"
+    >
+      Don't have an account?
+    </a>
+  </div>
+  <app-form-text-input
+    inputName="email"
+    inputPlaceholder="email"
+    inputType="email"
+    formControlName="email"
+    [errorMessage]="errors.email"
+  />
+  <app-form-text-input
+    inputName="password"
+    inputPlaceholder="password"
+    inputType="password"
+    formControlName="password"
+  />
+  <div class="min-h-[21px] text-[14px] font-semibold text-red-500">
+    <span *ngIf="!!errors.response">{{ errors.response }}</span>
+  </div>
+  <div class="mt-2 pb-2">
+    <app-button
+      className="w-full bg-primary py-3 text-base font-semibold text-white"
+      type="submit"
+      [isLoading]="loading"
+    >
+      Login
+    </app-button>
+  </div>
+</form>
